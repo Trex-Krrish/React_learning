@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default function TextForm(props) {
-
+    
     const CapitalClick = () => {
         let newText = "Under construction";
         setText(newText);
@@ -16,7 +16,7 @@ export default function TextForm(props) {
         let newText = text.toLowerCase();
         setText(newText);
     }
-    
+
     const upClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
