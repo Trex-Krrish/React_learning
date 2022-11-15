@@ -2,7 +2,18 @@ import React, { useState } from 'react'
 
 export default function TextForm(props) {
     
-    const CapitalClick = () => {
+    const handelExtraSpaces = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
+
+    const CopyText = () => {
+        let text = document.getElementById("myBox");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+    }
+
+    const Capitalize = () => {
         let newText = "Under construction";
         setText(newText);
     }
@@ -12,12 +23,12 @@ export default function TextForm(props) {
         setText(newText);
     }
 
-    const loClick = () => {
+    const lowerCase = () => {
         let newText = text.toLowerCase();
         setText(newText);
     }
 
-    const upClick = () => {
+    const upperCase = () => {
         let newText = text.toUpperCase();
         setText(newText);
     }
@@ -31,12 +42,14 @@ export default function TextForm(props) {
             <div className='container'>
                 <h1>{props.heading}</h1>
                 <div className="form-group">
-                    <textarea className="form-control" value={text} onChange={handelOnChange} id="exampleFormControlTextarea1" rows="8"></textarea>
+                    <textarea className="form-control" value={text} onChange={handelOnChange} id="myBox" rows="8"></textarea>
                 </div>
-                <button className="btn btn-primary my-3 mx-3" onClick={upClick}>Upper Case</button>
-                <button className="btn btn-primary my-3 mx-3" onClick={loClick}>Lower Case</button>
-                <button className="btn btn-primary my-3 mx-3" onClick={CapitalClick}>Capitalize Case</button>
+                <button className="btn btn-primary my-3 mx-3" onClick={upperCase}>Upper Case</button>
+                <button className="btn btn-primary my-3 mx-3" onClick={lowerCase}>Lower Case</button>
+                <button className="btn btn-primary my-3 mx-3" onClick={Capitalize}>Capitalize Case</button>
                 <button className="btn btn-primary my-3 mx-3" onClick={ClearClick}>Clear Text</button>
+                <button className="btn btn-primary my-3 mx-3" onClick={CopyText}>Copy Text</button>
+                <button className="btn btn-primary my-3 mx-3" onClick={handelExtraSpaces}>Remove Extra spacest</button>
             </div>
             <div className="container my-3">
                 <h1>Your text Summery.</h1>
